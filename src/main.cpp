@@ -7,11 +7,12 @@
 
 #define ENCODER_A 3
 #define ENCODER_B 4
-#define MOTOR_EN (5)
-#define MOTOR_PH (6)
-#define MOTOR_SL (7)
+#define MOTOR_PWM1 (5)
+#define MOTOR_PWM2 (6)
 #define CAN0_INT 2 // Set INT to pin 2
 #define BASE_ID (0x100)
+#define LED1_PIN (A0)
+#define LED2_PIN (A1)
 
 #define VBAT_PIN (A6)
 float gAnalogReference = 5;
@@ -126,10 +127,15 @@ void rencoder()
 void setup()
 {
   Serial.begin(115200);
-  pinMode(MOTOR_PH, OUTPUT);
-  pinMode(MOTOR_SL, OUTPUT);
-  digitalWrite(MOTOR_SL, LOW);
+  pinMode(MOTOR_PWM1, OUTPUT);
+  pinMode(MOTOR_PWM2, OUTPUT);
+  digitalWrite(MOTOR_PWM1, LOW);
+  digitalWrite(MOTOR_PWM2, LOW);
   pinMode(VBAT_PIN, INPUT);
+  pinMode(LED1_PIN, OUTPUT);
+  pinMode(LED2_PIN, OUTPUT);
+
+  digitalWrite(LED1_PIN, HIGH);
 
 START_INIT:
 
@@ -168,6 +174,7 @@ void setPwm(char mode, byte duty)
   short m = mode * duty;
   if (m == sLast) return;
   sLast = m;
+  duty = 255 - duty; // PWM zwischen Bremsen und Fahren
   // Serial.print("SetPwm(");
   // Serial.print((int)mode);
   // Serial.print(",");
@@ -175,28 +182,26 @@ void setPwm(char mode, byte duty)
   // Serial.println(")");
   if (mode == 1) // forward
   {
-    digitalWrite(MOTOR_PH, LOW);
-    digitalWrite(MOTOR_SL, HIGH);
-    analogWrite(MOTOR_EN, duty);
+    digitalWrite(MOTOR_PWM1, HIGH);
+    analogWrite(MOTOR_PWM2, duty);
     gPWM = duty;
   }
   else if (mode == -1) // backward
   {
-    digitalWrite(MOTOR_PH, HIGH);
-    digitalWrite(MOTOR_SL, HIGH);
-    analogWrite(MOTOR_EN, duty);
+    digitalWrite(MOTOR_PWM2, HIGH);
+    analogWrite(MOTOR_PWM1, duty);
     gPWM = -duty;
   }
   else if (mode == 0) // coast
   {
-    digitalWrite(MOTOR_SL, LOW);
-    digitalWrite(MOTOR_EN, LOW);
+    digitalWrite(MOTOR_PWM1, LOW);
+    digitalWrite(MOTOR_PWM2, LOW);
     gPWM = 0;
   }
   else // break
   {
-    digitalWrite(MOTOR_SL, HIGH);
-    digitalWrite(MOTOR_EN, LOW);
+    digitalWrite(MOTOR_PWM1, HIGH);
+    digitalWrite(MOTOR_PWM2, HIGH);
     gPWM = 9999;
   }
 }
@@ -374,7 +379,7 @@ void loop()
     // Serial.print(" OUT=");
     // Serial.println(gPWM);
 
-    float vbat = (float)v * gAnalogReference * 10 / 1023;
+    float vbat = (float)v * gAnalogReference * 9 / 1023;
     memcpy(buf, &vbat, 4);
     memcpy(buf+4, &gTargetPosition, 4);
 

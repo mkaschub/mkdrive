@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "/home/mjk/sync/progs/mu_code/ESP32_Tank"
+		},
+		{
+			"name": "CAN_Motor",
+			"path": "."
+		}
+	],
+	"settings": {
+		"MicroPython.executeButton": [
+			{
+				"text": "▶",
+				"tooltip": "Run",
+				"alignment": "left",
+				"command": "extension.executeFile",
+				"priority": 3.5
+			}
+		],
+		"MicroPython.syncButton": [
+			{
+				"text": "$(sync)",
+				"tooltip": "sync",
+				"alignment": "left",
+				"command": "extension.execute",
+				"priority": 4
+			}
+		]
+	}
+}
