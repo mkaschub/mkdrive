@@ -4,13 +4,13 @@
 
 #include <SPI.h>
 #include "mcp_can.h"
+#include <EEPROM.h>
 
 #define ENCODER_A 3
 #define ENCODER_B 4
 #define MOTOR_PWM1 (5)
 #define MOTOR_PWM2 (6)
 #define CAN0_INT 2 // Set INT to pin 2
-#define BASE_ID (0x100)
 #define LED1_PIN (A0)
 #define LED2_PIN (A1)
 
@@ -28,14 +28,49 @@ long count = 0;
 MCP_CAN CAN(10); // Set CS to pin 10
 
 
+uint8_t gDiagSession = 0;
+
+struct GLOBAL_PARAMS {
+  uint32_t mSerial = 0;
+  float mPIDkP = 10;
+  float mPIDkI = 20;
+  float mPIDkD = 0.3 ;
+  float mPIDmax = 255;
+  uint16_t mCANid = 100;
+  uint8_t mNodeID = 1;
+} gParam;
+
+float gPIDtarget = 0;
+
+void print_eeprom() {
+  Serial.print("mSerial="); Serial.println(gParam.mSerial);
+  Serial.print("mPIDkP ="); Serial.println(gParam.mPIDkP);
+  Serial.print("mPIDkI ="); Serial.println(gParam.mPIDkI);
+  Serial.print("mPIDkD ="); Serial.println(gParam.mPIDkD);
+  Serial.print("mPIDmax="); Serial.println(gParam.mPIDmax);
+  Serial.print("mNodeID="); Serial.println(gParam.mNodeID);
+}
+
 
 //#include <PIDController.h>
 //PIDController pid;
-float gPIDkP = 10;
-float gPIDkI = 20;
-float gPIDkD = 0.3 ;
-float gPIDmax = 255;
-float gPIDtarget = 0;
+
+
+void read_eeprom()
+{
+  for(size_t i=0; i<sizeof(gParam); i++)
+  {
+    *(((char*)&gParam) + i) = EEPROM.read(i);
+  }
+}
+
+void update_eeprom()
+{
+  for(size_t i=0; i<sizeof(gParam); i++)
+  {
+    EEPROM.update(i, *(((char*)&gParam) + i));
+  }
+}
 
 void pid_setpoint(float target)
 {
@@ -45,8 +80,8 @@ void pid_setpoint(float target)
 
 void set_pid()
 {
-  //pid.tune(gPIDkP, gPIDkI, gPIDkD); // Tune the PID, arguments: kP, kI, kD
-  //pid.limit(-gPIDmax, gPIDmax);     // Limit the PID output between 0 and 255, this is important to get rid of integral windup!
+  //pid.tune(mPIDkP, mPIDkI, mPIDkD); // Tune the PID, arguments: kP, kI, kD
+  //pid.limit(-mPIDmax, mPIDmax);     // Limit the PID output between 0 and 255, this is important to get rid of integral windup!
 }
 
 float calc_pid(float current)
@@ -64,10 +99,10 @@ float calc_pid(float current)
   float dt = (millis() - sLastTime) * 0.001;
   sLastTime = millis();
 
-  sResult = gPIDkP * error; // P
+  sResult = gParam.mPIDkP * error; // P
 
   // I
-  if (abs(sResult) >= gPIDmax) 
+  if (abs(sResult) >= gParam.mPIDmax) 
   {
     sIntegral = 0; // anti windup
   } 
@@ -78,10 +113,10 @@ float calc_pid(float current)
   else 
   {
     sIntegral += error * dt;
-    sResult += gPIDkI * sIntegral;
+    sResult += gParam.mPIDkI * sIntegral;
   }
 
-  sResult += gPIDkD * (error - sLastError) / dt; // D
+  sResult += gParam.mPIDkD * (error - sLastError) / dt; // D
 
   // Serial.print("calc_pid: e=");
   // Serial.print(error);
@@ -92,8 +127,8 @@ float calc_pid(float current)
   // Serial.println("");
 
   sLastError = error;
-  sResult = constrain(sResult, -gPIDmax, gPIDmax);
-  if (abs(sResult) < 0.1 * gPIDmax)
+  sResult = constrain(sResult, -gParam.mPIDmax, gParam.mPIDmax);
+  if (abs(sResult) < 0.1 * gParam.mPIDmax)
     sResult = 0;
   if (abs(error) < 5) 
     sResult = 0;
@@ -124,6 +159,15 @@ void rencoder()
   }
 }
 
+void can_filter()
+{
+  CAN.init_Mask(0, 0, 0x07000000); // 256er Block
+  CAN.init_Mask(1, 0, 0x07F00000); // 16er Block
+  CAN.init_Filt(3, 0, ((unsigned long)gParam.mCANid) << 16);//0x01000000); //((unsigned long)gParam.mCANid) << 16);
+  CAN.init_Filt(1, 0, 0x07000000); // Diagnose
+  CAN.setMode(MCP_NORMAL); // Set operation mode to normal so the MCP2515 sends acks to received data.
+}
+
 void setup()
 {
   Serial.begin(115200);
@@ -141,13 +185,8 @@ START_INIT:
 
   if (CAN_OK == CAN.begin(MCP_STDEXT, CAN_125KBPS, MCP_16MHZ)) // init can bus : baudrate = 500k
   {
-
     pinMode(CAN0_INT, INPUT);        // Configuring pin for /INT input
-    CAN.init_Filt(0, 0, 0x01000000); //((unsigned long)BASE_ID) << 16);
-    CAN.init_Mask(0, 0, 0x07F00000);
-    CAN.init_Filt(1, 0, 0);
-    CAN.init_Mask(1, 0, 0x07FF0000);
-    CAN.setMode(MCP_NORMAL); // Set operation mode to normal so the MCP2515 sends acks to received data.
+    can_filter();
 
     Serial.println("CAN BUS Shield init ok!");
   }
@@ -252,35 +291,112 @@ void controlSpeed()
   // sLastPos = count;
   // sLastCalc = millis();
 }
-
-void loop()
+void send_diag(uint8_t sid, uint16_t pid)
 {
-  rencoder();
+    buf[0] = 0x00 + 3; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[4] = 0; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
 
-  if (gEncoderError)
+void send_diag8(uint8_t sid, uint16_t pid, uint8_t data)
+{
+    buf[0] = 0x00 + 4; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[4] = data; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
+void send_diag16(uint8_t sid, uint16_t pid, uint16_t data)
+{
+    buf[0] = 0x00 + 4; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    memcpy(buf+4, &data, 2);  buf[6] = 0; buf[7] = 0; 
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
+
+void send_diag32(uint8_t sid, uint16_t pid, uint32_t data)
+{
+    buf[0] = 0x00 + 7; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    memcpy(buf+4, &data, 4);
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
+
+void send_diag(uint8_t sid, uint16_t pid, float data)
+{
+    buf[0] = 0x00 + 7; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    memcpy(buf+4, &data, 4);
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
+
+void send_diagerr(uint8_t sid, uint8_t code)
+{
+    buf[0] = 0x00 + 3; 
+    buf[1] = sid;
+    buf[2] = sid;
+    buf[3] = code;
+    buf[4] = 0; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
+
+void handle_diag(uint16_t canId)
+{
+  bool functional = (canId == 0x7DF);
+  uint8_t tpType = buf[0] >> 4;
+  uint8_t len = buf[0] & 0x0F;
+  uint8_t sid = buf[1];
+  uint16_t pid = (buf[2] << 8) + buf[3];
+  if (tpType != 0)
   {
-    Serial.println("ENCODER ERROR");
-    gEncoderError = false;
+    send_diagerr(sid, 0x13); // Message length or format incorrect
+    return;
   }
-  if (millis() >= gTimeOut)
+  if (sid == 0x22) // read by ID
   {
-    setPwm(0, 0);
-    gMode = 0;
-    gTimeOut = -1;
-    Serial.println("TIMEOUT!");
+    if      (pid == 1) { send_diag32(0x62, pid, gParam.mSerial); }
+    else if (pid == 2) { send_diag8(0x62, pid, gParam.mNodeID);}
+    else if (pid == 3) { send_diag(0x62, pid, gParam.mPIDkP);}
+    else if (pid == 4) { send_diag(0x62, pid, gParam.mPIDkI);}
+    else if (pid == 5) { send_diag(0x62, pid, gParam.mPIDkD);}
+    else if (pid == 6) { send_diag(0x62, pid, gParam.mPIDmax);}
+    else if (pid == 7) { send_diag16(0x62, pid, gParam.mCANid);}
+    else  { send_diagerr(sid, 0x12); // subfunction not supported
+    }    
+  }
+  if (sid == 0x2E) // write by ID
+  {
+    if      (pid == 1) { memcpy(&gParam.mSerial, buf+4, 4); send_diag(0x6E, pid); }
+    else if (pid == 2) { memcpy(&gParam.mNodeID, buf+1, 4); send_diag(0x6E, pid); }
+    else if (pid == 3) { memcpy(&gParam.mPIDkP,  buf+4, 4); send_diag(0x6E, pid); } 
+    else if (pid == 4) { memcpy(&gParam.mPIDkI,  buf+4, 4); send_diag(0x6E, pid); } 
+    else if (pid == 5) { memcpy(&gParam.mPIDkD,  buf+4, 4); send_diag(0x6E, pid); } 
+    else if (pid == 6) { memcpy(&gParam.mPIDmax, buf+4, 4); send_diag(0x6E, pid); }
+    else if (pid == 7) { memcpy(&gParam.mCANid,  buf+4, 2); send_diag(0x6E, pid); }
+    else  { 
+      send_diagerr(sid, 0x12); // subfuncton not suport ed
+      return;
+    } 
+    update_eeprom();
+    can_filter();
   }
 
-    if (gMode == 1) {
-      controlPosition();
-    } else if (gMode == 2)  {
-      controlSpeed();
-    }
+}
+
+void can_loop()
+{
 
   long unsigned int rxId;
   if (CAN_MSGAVAIL == CAN.checkReceive()) // check if data coming
   {
     CAN.readMsgBuf(&rxId, &len, buf); // read data,  len: data length, buf: data buf
-    if ((rxId & 0x7F0) != BASE_ID)
+    uint16_t id = 0x07FF & rxId;
+    if (id == 0x07DF)
+      handle_diag(id);
+    if (id == ((uint16_t)0x0700 + gParam.mNodeID))
+      handle_diag(id);
+
+    if ((rxId & 0x7F0) != gParam.mCANid)
       return;
     char cmd = rxId & 0x0F;
     if (cmd <= 4)
@@ -307,15 +423,15 @@ void loop()
     }
     else if (cmd == 10) // set kP & k
     {
-      memcpy(&gPIDkP, buf, 4);
-      memcpy(&gPIDkI, buf+4, 4);
+      memcpy(&gParam.mPIDkP, buf, 4);
+      memcpy(&gParam.mPIDkI, buf+4, 4);
       set_pid();
     }
 
     else if (cmd == 11) // set kP & k
     {
-      memcpy(&gPIDkD, buf, 4);
-      memcpy(&gPIDmax, buf+4, 4);
+      memcpy(&gParam.mPIDkD, buf, 4);
+      memcpy(&gParam.mPIDmax, buf+4, 4);
       set_pid();
     }
 
@@ -329,6 +445,34 @@ void loop()
     // }
     // Serial.println();
   }
+}
+
+
+void loop()
+{
+  rencoder();
+
+  if (gEncoderError)
+  {
+    Serial.println("ENCODER ERROR");
+    gEncoderError = false;
+  }
+  if (millis() >= gTimeOut)
+  {
+    setPwm(0, 0);
+    gMode = 0;
+    gTimeOut = -1;
+    Serial.println("TIMEOUT!");
+  }
+
+  if (gMode == 1) {
+    controlPosition();
+  } else if (gMode == 2)  {
+    controlSpeed();
+  }
+
+  can_loop();
+
 
   static unsigned long sLast10ms = 0;
   if (millis() > (sLast10ms + 10))
@@ -341,7 +485,7 @@ void loop()
     buf[2] = gMode;
     buf[3] = 0;
     memcpy(buf+4, &count, 4);
-    CAN.sendMsgBuf(BASE_ID+0x10, 0, 8, buf);
+    CAN.sendMsgBuf(gParam.mCANid + 0x10, 0, 8, buf);
     return;
   }
 
@@ -383,6 +527,6 @@ void loop()
     memcpy(buf, &vbat, 4);
     memcpy(buf+4, &gTargetPosition, 4);
 
-    CAN.sendMsgBuf(BASE_ID+0x11, 0, 8, buf);
+    CAN.sendMsgBuf(gParam.mCANid+0x11, 0, 8, buf);
   }
 }
