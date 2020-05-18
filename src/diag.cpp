@@ -8,7 +8,7 @@ struct global_param_type gParam;
 static uint8_t buf[8];
 extern MCP_CAN CAN;
 
-void send_diag(uint8_t sid, uint16_t pid)
+void diagSend(uint8_t sid, uint16_t pid)
 {
     buf[0] = 0x00 + 3; buf[1] = sid;
     buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
@@ -16,14 +16,14 @@ void send_diag(uint8_t sid, uint16_t pid)
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
 
-void send_diag8(uint8_t sid, uint16_t pid, uint8_t data)
+void diagSend_u8(uint8_t sid, uint16_t pid, uint8_t data)
 {
     buf[0] = 0x00 + 4; buf[1] = sid;
     buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
     buf[4] = data; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
-void send_diag16(uint8_t sid, uint16_t pid, uint16_t data)
+void diagSend_u16(uint8_t sid, uint16_t pid, uint16_t data)
 {
     buf[0] = 0x00 + 5; buf[1] = sid;
     buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
@@ -31,7 +31,7 @@ void send_diag16(uint8_t sid, uint16_t pid, uint16_t data)
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
 
-void send_diag32(uint8_t sid, uint16_t pid, uint32_t data)
+void diagSend_u32(uint8_t sid, uint16_t pid, uint32_t data)
 {
     buf[0] = 0x00 + 7; buf[1] = sid;
     buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
@@ -39,7 +39,7 @@ void send_diag32(uint8_t sid, uint16_t pid, uint32_t data)
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
 
-void send_diag(uint8_t sid, uint16_t pid, float data)
+void diagSend(uint8_t sid, uint16_t pid, float data)
 {
     buf[0] = 0x00 + 7; buf[1] = sid;
     buf[2] = pid >> 8;  buf[3] = pid & 0xFF;
@@ -47,7 +47,7 @@ void send_diag(uint8_t sid, uint16_t pid, float data)
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
 
-void send_diagerr(uint8_t sid, uint8_t code)
+void diagSendErr(uint8_t sid, uint8_t code)
 {
     buf[0] = 0x00 + 3; 
     buf[1] = 0x7F ;
@@ -58,7 +58,7 @@ void send_diagerr(uint8_t sid, uint8_t code)
 }
 
 // Return value: true = need to update eeprom and can filters 
-bool handle_diag(uint16_t canId, uint8_t inbuf[])
+bool diagHandleMessage(uint16_t canId, uint8_t inbuf[])
 {
   bool functional = (canId == 0x7DF);
   uint8_t tpType = inbuf[0] >> 4;
@@ -67,7 +67,7 @@ bool handle_diag(uint16_t canId, uint8_t inbuf[])
   uint16_t pid = (inbuf[2] << 8) + inbuf[3];
   if (tpType != 0)
   {
-    send_diagerr(sid, 0x13); // Message length or format incorrect
+    diagSendErr(sid, 0x13); // Message length or format incorrect
     return false;
   }
   if (sid == 0x10) // Session Control
@@ -76,12 +76,12 @@ bool handle_diag(uint16_t canId, uint8_t inbuf[])
     if ((gDiagSession != 0) && (pid == 0))
     {
       gDiagSession = 0;
-      send_diag(sid + 0x40, gParam.mNodeID);
+      diagSend(sid + 0x40, gParam.mNodeID);
     }
     else if ((pid == 2) && (!functional))
     {
       gDiagSession = 1;
-      send_diag32(sid + 0x40, gParam.mNodeID, gParam.mSerial);
+      diagSend_u32(sid + 0x40, gParam.mNodeID, gParam.mSerial);
     }
     else if (pid == 5) 
     {
@@ -90,20 +90,20 @@ bool handle_diag(uint16_t canId, uint8_t inbuf[])
       if(serial == gParam.mSerial)
       {
         gDiagSession = 1;
-        send_diag32(sid + 0x40, gParam.mNodeID, gParam.mSerial);
+        diagSend_u32(sid + 0x40, gParam.mNodeID, gParam.mSerial);
       }
     }
   }
   else if (sid == 0x22) // read by ID
   {
-    if      (pid == 1) { send_diag32(sid + 0x40, pid, gParam.mSerial); }
-    else if (pid == 2) { send_diag8 (sid + 0x40, pid, gParam.mNodeID);}
-    else if (pid == 3) { send_diag  (sid + 0x40, pid, gParam.mPIDkP);}
-    else if (pid == 4) { send_diag  (sid + 0x40, pid, gParam.mPIDkI);}
-    else if (pid == 5) { send_diag  (sid + 0x40, pid, gParam.mPIDkD);}
-    else if (pid == 6) { send_diag  (sid + 0x40, pid, gParam.mPIDmax);}
-    else if (pid == 7) { send_diag16(sid + 0x40, pid, gParam.mCANid);}
-    else  { send_diagerr(sid, 0x12); // subfunction not supported
+    if      (pid == 1) { diagSend_u32(sid + 0x40, pid, gParam.mSerial); }
+    else if (pid == 2) { diagSend_u8 (sid + 0x40, pid, gParam.mNodeID);}
+    else if (pid == 3) { diagSend    (sid + 0x40, pid, gParam.mPIDkP);}
+    else if (pid == 4) { diagSend    (sid + 0x40, pid, gParam.mPIDkI);}
+    else if (pid == 5) { diagSend    (sid + 0x40, pid, gParam.mPIDkD);}
+    else if (pid == 6) { diagSend    (sid + 0x40, pid, gParam.mPIDmax);}
+    else if (pid == 7) { diagSend_u16(sid + 0x40, pid, gParam.mCANid);}
+    else  { diagSendErr(sid, 0x12); // subfunction not supported
     }    
   }
   else if (sid == 0x2E)    // write by ID
@@ -112,21 +112,21 @@ bool handle_diag(uint16_t canId, uint8_t inbuf[])
     {
       return false;
     }
-    if      (pid == 1) { memcpy(&gParam.mSerial, inbuf+4, sizeof(gParam.mSerial)); send_diag(sid + 0x40, pid); }
-    else if (pid == 2) { memcpy(&gParam.mNodeID, inbuf+4, sizeof(gParam.mNodeID)); send_diag(sid + 0x40, pid); }
-    else if (pid == 3) { memcpy(&gParam.mPIDkP,  inbuf+4, sizeof(gParam.mPIDkP));  send_diag(sid + 0x40, pid); } 
-    else if (pid == 4) { memcpy(&gParam.mPIDkI,  inbuf+4, sizeof(gParam.mPIDkI));  send_diag(sid + 0x40, pid); } 
-    else if (pid == 5) { memcpy(&gParam.mPIDkD,  inbuf+4, sizeof(gParam.mPIDkD));  send_diag(sid + 0x40, pid); } 
-    else if (pid == 6) { memcpy(&gParam.mPIDmax, inbuf+4, sizeof(gParam.mPIDmax)); send_diag(sid + 0x40, pid); }
-    else if (pid == 7) { memcpy(&gParam.mCANid,  inbuf+4, sizeof(gParam.mCANid));  send_diag(sid + 0x40, pid); }
+    if      (pid == 1) { memcpy(&gParam.mSerial, inbuf+4, sizeof(gParam.mSerial)); diagSend(sid + 0x40, pid); }
+    else if (pid == 2) { memcpy(&gParam.mNodeID, inbuf+4, sizeof(gParam.mNodeID)); diagSend(sid + 0x40, pid); }
+    else if (pid == 3) { memcpy(&gParam.mPIDkP,  inbuf+4, sizeof(gParam.mPIDkP));  diagSend(sid + 0x40, pid); } 
+    else if (pid == 4) { memcpy(&gParam.mPIDkI,  inbuf+4, sizeof(gParam.mPIDkI));  diagSend(sid + 0x40, pid); } 
+    else if (pid == 5) { memcpy(&gParam.mPIDkD,  inbuf+4, sizeof(gParam.mPIDkD));  diagSend(sid + 0x40, pid); } 
+    else if (pid == 6) { memcpy(&gParam.mPIDmax, inbuf+4, sizeof(gParam.mPIDmax)); diagSend(sid + 0x40, pid); }
+    else if (pid == 7) { memcpy(&gParam.mCANid,  inbuf+4, sizeof(gParam.mCANid));  diagSend(sid + 0x40, pid); }
     else  { 
-      send_diagerr(sid, 0x12); // subfuncton not suport ed
+      diagSendErr(sid, 0x12); // subfuncton not suport ed
       return false;
     }
     return true;
   } else if (!functional)
   {
-    send_diagerr(sid, 0x11); // service not suport ed
+    diagSendErr(sid, 0x11); // service not suport ed
   }
   return false;
 }

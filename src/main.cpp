@@ -292,15 +292,14 @@ void can_loop()
 
     CAN.readMsgBuf(&rxId, &len, buf); // read data,  len: data length, buf: data buf
     uint16_t id = 0x07FF & rxId;
-    if (id == 0x07DF)
-      if (handle_diag(id, buf)) 
+    if ((id == 0x07DF) || (id == ((uint16_t)0x0700 + gParam.mNodeID)))
+    {
+      if (diagHandleMessage(id, buf)) 
       { 
         update_eeprom();
         can_filter();
       }
-    if (id == ((uint16_t)0x0700 + gParam.mNodeID))
-      handle_diag(id, buf);
-
+    }
     if ((rxId & 0x7F0) != gParam.mCANid)
       return;
     char cmd = rxId & 0x0F;
