@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include "mcp_can.h"
 #include <EEPROM.h>
+#include "diag.h"
 
 #define ENCODER_A 3
 #define ENCODER_B 4
@@ -12,7 +13,7 @@
 #define BTN_PIN (7)
 
 #define VBAT_PIN (A6)
-float gAnalogReference = 5;
+static float gVBat = 12;
 
 
 unsigned char Flag_Recv = 0;
@@ -25,17 +26,6 @@ long count = 0;
 MCP_CAN CAN(10); // Set CS to pin 10
 
 
-uint8_t gDiagSession = 0;
-
-struct GLOBAL_PARAMS {
-  uint32_t mSerial = 0;
-  float mPIDkP = 10;
-  float mPIDkI = 20;
-  float mPIDkD = 0.3 ;
-  float mPIDmax = 255;
-  uint16_t mCANid = 100;
-  uint8_t mNodeID = 1;
-} gParam;
 
 float gPIDtarget = 0;
 
@@ -292,97 +282,6 @@ void controlSpeed()
   // sLastPos = count;
   // sLastCalc = millis();
 }
-void send_diag(uint8_t sid, uint16_t pid)
-{
-    buf[0] = 0x00 + 3; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
-    buf[4] = 0; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
-    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
-}
-
-void send_diag8(uint8_t sid, uint16_t pid, uint8_t data)
-{
-    buf[0] = 0x00 + 4; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
-    buf[4] = data; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
-    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
-}
-void send_diag16(uint8_t sid, uint16_t pid, uint16_t data)
-{
-    buf[0] = 0x00 + 5; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
-    memcpy(buf+4, &data, 2);  buf[6] = 0; buf[7] = 0; 
-    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
-}
-
-void send_diag32(uint8_t sid, uint16_t pid, uint32_t data)
-{
-    buf[0] = 0x00 + 7; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
-    memcpy(buf+4, &data, 4);
-    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
-}
-
-void send_diag(uint8_t sid, uint16_t pid, float data)
-{
-    buf[0] = 0x00 + 7; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid & 0xFF;
-    memcpy(buf+4, &data, 4);
-    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
-}
-
-void send_diagerr(uint8_t sid, uint8_t code)
-{
-    buf[0] = 0x00 + 3; 
-    buf[1] = 0x7F ;
-    buf[2] = sid;
-    buf[3] = code;
-    buf[4] = 0; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
-    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
-}
-
-void handle_diag(uint16_t canId)
-{
-  bool functional = (canId == 0x7DF);
-  uint8_t tpType = buf[0] >> 4;
-  uint8_t len = buf[0] & 0x0F;
-  uint8_t sid = buf[1];
-  uint16_t pid = (buf[2] << 8) + buf[3];
-  if (tpType != 0)
-  {
-    send_diagerr(sid, 0x13); // Message length or format incorrect
-    return;
-  }
-  if (sid == 0x22) // read by ID
-  {
-    if      (pid == 1) { send_diag32(sid + 0x40, pid, gParam.mSerial); }
-    else if (pid == 2) { send_diag8 (sid + 0x40, 2, gParam.mNodeID);}
-    else if (pid == 3) { send_diag  (sid + 0x40, pid, gParam.mPIDkP);}
-    else if (pid == 4) { send_diag  (sid + 0x40, pid, gParam.mPIDkI);}
-    else if (pid == 5) { send_diag  (sid + 0x40, pid, gParam.mPIDkD);}
-    else if (pid == 6) { send_diag  (sid + 0x40, pid, gParam.mPIDmax);}
-    else if (pid == 7) { send_diag16(sid + 0x40, pid, gParam.mCANid);}
-    else  { send_diagerr(sid, 0x12); // subfunction not supported
-    }    
-  }
-  else if (sid == 0x2E) // write by ID
-  {
-    if      (pid == 1) { memcpy(&gParam.mSerial, buf+4, sizeof(gParam.mSerial)); send_diag(sid + 0x40, pid); }
-    else if (pid == 2) { memcpy(&gParam.mNodeID, buf+4, sizeof(gParam.mNodeID)); send_diag(sid + 0x40, pid); }
-    else if (pid == 3) { memcpy(&gParam.mPIDkP,  buf+4, 4); send_diag(sid + 0x40, pid); } 
-    else if (pid == 4) { memcpy(&gParam.mPIDkI,  buf+4, 4); send_diag(sid + 0x40, pid); } 
-    else if (pid == 5) { memcpy(&gParam.mPIDkD,  buf+4, 4); send_diag(sid + 0x40, pid); } 
-    else if (pid == 6) { memcpy(&gParam.mPIDmax, buf+4, 4); send_diag(sid + 0x40, pid); }
-    else if (pid == 7) { memcpy(&gParam.mCANid,  buf+4, 2); send_diag(sid + 0x40, pid); }
-    else  { 
-      send_diagerr(sid, 0x12); // subfuncton not suport ed
-      return;
-    } 
-    update_eeprom();
-    can_filter();
-  }
-
-}
 
 void can_loop()
 {
@@ -394,9 +293,13 @@ void can_loop()
     CAN.readMsgBuf(&rxId, &len, buf); // read data,  len: data length, buf: data buf
     uint16_t id = 0x07FF & rxId;
     if (id == 0x07DF)
-      handle_diag(id);
+      if (handle_diag(id, buf)) 
+      { 
+        update_eeprom();
+        can_filter();
+      }
     if (id == ((uint16_t)0x0700 + gParam.mNodeID))
-      handle_diag(id);
+      handle_diag(id, buf);
 
     if ((rxId & 0x7F0) != gParam.mCANid)
       return;
@@ -459,6 +362,27 @@ void button_loop()
 }
 
 
+void loop_vbat()
+{
+  static float gAnalogReference = 5;
+  short v = analogRead(VBAT_PIN);
+  float vbat = (float)v * gAnalogReference * 11.6 / 1023;
+
+  gVBat = 0.1 * vbat + 0.9 * gVBat;
+
+  if (v > 900)
+  {
+    analogReference(DEFAULT);
+    gAnalogReference = 5;
+  } else if (v < 180)
+  {
+    analogReference(INTERNAL);
+    gAnalogReference = 1.1;
+  }
+
+}
+
+
 void loop()
 {
   rencoder();
@@ -485,6 +409,9 @@ void loop()
   can_loop();
   button_loop();
 
+
+
+
   static unsigned long sLast10ms = 0;
   if (millis() > (sLast10ms + 10))
   {
@@ -502,6 +429,7 @@ void loop()
     // DEBUG MSG
     buf[0] = digitalRead(BTN_PIN);
     buf[1] = gDiagSession;       
+    //buf[2] = (uint8_t)gAnalogReference;
     memcpy(buf+4, &sLast10ms, 4);
 
     CAN.sendMsgBuf(gParam.mCANid + 0x0F, 0, 8, buf);
@@ -515,6 +443,7 @@ void loop()
   if (millis() > (sLast100ms + 100))
   {
     sLast100ms = millis();
+    loop_vbat();
   }
 
 
@@ -522,29 +451,9 @@ void loop()
   if (millis() > (sLast1s + 100))
   {
     sLast1s = millis();
-    short v = analogRead(VBAT_PIN);
-    if (v > 900)
-    {
-      analogReference(DEFAULT);
-      gAnalogReference = 5;
-    } else if (v < 180)
-    {
-      analogReference(INTERNAL);
-      gAnalogReference = 1.1;
-    }
-    // Serial.print("V=");
-    // Serial.print(v / 2);
-    // Serial.print(" Mode=");
-    // Serial.print(gMode);
-    // Serial.print(" Pos=");
-    // Serial.print(count);
-    // Serial.print(" Target=");
-    // Serial.print(gTargetPosition);
-    // Serial.print(" OUT=");
-    // Serial.println(gPWM);
+   
 
-    float vbat = (float)v * gAnalogReference * 9 / 1023;
-    memcpy(buf, &vbat, 4);
+    memcpy(buf, &gVBat, 4);
     memcpy(buf+4, &gTargetPosition, 4);
 
     CAN.sendMsgBuf(gParam.mCANid+0x11, 0, 8, buf);
