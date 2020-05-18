@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "/home/mjk/sync/progs/mu_code/ESP32_Tank"
+			"path": "/home/mjk/Documents/PlatformIO/Projects/CAN_Motor/", 
 		},
 		{
 			"name": "CAN_Motor",
