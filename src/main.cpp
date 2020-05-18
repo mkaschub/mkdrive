@@ -1,7 +1,3 @@
-// demo: CAN-BUS Shield, receive data with check mode
-// send data coming to fast, such as less than 10ms, you can use this way
-// loovee, 2014-6-13
-
 #include <SPI.h>
 #include "mcp_can.h"
 #include <EEPROM.h>
@@ -13,6 +9,7 @@
 #define CAN0_INT 2 // Set INT to pin 2
 #define LED1_PIN (A0)
 #define LED2_PIN (A1)
+#define BTN_PIN (7)
 
 #define VBAT_PIN (A6)
 float gAnalogReference = 5;
@@ -176,10 +173,14 @@ void setup()
   digitalWrite(MOTOR_PWM1, LOW);
   digitalWrite(MOTOR_PWM2, LOW);
   pinMode(VBAT_PIN, INPUT);
+  pinMode(BTN_PIN, INPUT_PULLUP);
   pinMode(LED1_PIN, OUTPUT);
   pinMode(LED2_PIN, OUTPUT);
 
   digitalWrite(LED1_PIN, HIGH);
+  digitalWrite(LED2_PIN, HIGH);
+
+  read_eeprom();
 
 START_INIT:
 
@@ -294,7 +295,7 @@ void controlSpeed()
 void send_diag(uint8_t sid, uint16_t pid)
 {
     buf[0] = 0x00 + 3; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
     buf[4] = 0; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
@@ -302,14 +303,14 @@ void send_diag(uint8_t sid, uint16_t pid)
 void send_diag8(uint8_t sid, uint16_t pid, uint8_t data)
 {
     buf[0] = 0x00 + 4; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
     buf[4] = data; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
 void send_diag16(uint8_t sid, uint16_t pid, uint16_t data)
 {
-    buf[0] = 0x00 + 4; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[0] = 0x00 + 5; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
     memcpy(buf+4, &data, 2);  buf[6] = 0; buf[7] = 0; 
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
@@ -317,7 +318,7 @@ void send_diag16(uint8_t sid, uint16_t pid, uint16_t data)
 void send_diag32(uint8_t sid, uint16_t pid, uint32_t data)
 {
     buf[0] = 0x00 + 7; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
     memcpy(buf+4, &data, 4);
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
@@ -325,7 +326,7 @@ void send_diag32(uint8_t sid, uint16_t pid, uint32_t data)
 void send_diag(uint8_t sid, uint16_t pid, float data)
 {
     buf[0] = 0x00 + 7; buf[1] = sid;
-    buf[2] = pid >> 8;  buf[3] = pid && 0xFF;
+    buf[2] = pid >> 8;  buf[3] = pid & 0xFF;
     memcpy(buf+4, &data, 4);
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
@@ -333,7 +334,7 @@ void send_diag(uint8_t sid, uint16_t pid, float data)
 void send_diagerr(uint8_t sid, uint8_t code)
 {
     buf[0] = 0x00 + 3; 
-    buf[1] = sid;
+    buf[1] = 0x7F ;
     buf[2] = sid;
     buf[3] = code;
     buf[4] = 0; buf[5] = 0; buf[6] = 0; buf[7] = 0; 
@@ -354,25 +355,25 @@ void handle_diag(uint16_t canId)
   }
   if (sid == 0x22) // read by ID
   {
-    if      (pid == 1) { send_diag32(0x62, pid, gParam.mSerial); }
-    else if (pid == 2) { send_diag8(0x62, pid, gParam.mNodeID);}
-    else if (pid == 3) { send_diag(0x62, pid, gParam.mPIDkP);}
-    else if (pid == 4) { send_diag(0x62, pid, gParam.mPIDkI);}
-    else if (pid == 5) { send_diag(0x62, pid, gParam.mPIDkD);}
-    else if (pid == 6) { send_diag(0x62, pid, gParam.mPIDmax);}
-    else if (pid == 7) { send_diag16(0x62, pid, gParam.mCANid);}
+    if      (pid == 1) { send_diag32(sid + 0x40, pid, gParam.mSerial); }
+    else if (pid == 2) { send_diag8 (sid + 0x40, 2, gParam.mNodeID);}
+    else if (pid == 3) { send_diag  (sid + 0x40, pid, gParam.mPIDkP);}
+    else if (pid == 4) { send_diag  (sid + 0x40, pid, gParam.mPIDkI);}
+    else if (pid == 5) { send_diag  (sid + 0x40, pid, gParam.mPIDkD);}
+    else if (pid == 6) { send_diag  (sid + 0x40, pid, gParam.mPIDmax);}
+    else if (pid == 7) { send_diag16(sid + 0x40, pid, gParam.mCANid);}
     else  { send_diagerr(sid, 0x12); // subfunction not supported
     }    
   }
-  if (sid == 0x2E) // write by ID
+  else if (sid == 0x2E) // write by ID
   {
-    if      (pid == 1) { memcpy(&gParam.mSerial, buf+4, 4); send_diag(0x6E, pid); }
-    else if (pid == 2) { memcpy(&gParam.mNodeID, buf+1, 4); send_diag(0x6E, pid); }
-    else if (pid == 3) { memcpy(&gParam.mPIDkP,  buf+4, 4); send_diag(0x6E, pid); } 
-    else if (pid == 4) { memcpy(&gParam.mPIDkI,  buf+4, 4); send_diag(0x6E, pid); } 
-    else if (pid == 5) { memcpy(&gParam.mPIDkD,  buf+4, 4); send_diag(0x6E, pid); } 
-    else if (pid == 6) { memcpy(&gParam.mPIDmax, buf+4, 4); send_diag(0x6E, pid); }
-    else if (pid == 7) { memcpy(&gParam.mCANid,  buf+4, 2); send_diag(0x6E, pid); }
+    if      (pid == 1) { memcpy(&gParam.mSerial, buf+4, sizeof(gParam.mSerial)); send_diag(sid + 0x40, pid); }
+    else if (pid == 2) { memcpy(&gParam.mNodeID, buf+4, sizeof(gParam.mNodeID)); send_diag(sid + 0x40, pid); }
+    else if (pid == 3) { memcpy(&gParam.mPIDkP,  buf+4, 4); send_diag(sid + 0x40, pid); } 
+    else if (pid == 4) { memcpy(&gParam.mPIDkI,  buf+4, 4); send_diag(sid + 0x40, pid); } 
+    else if (pid == 5) { memcpy(&gParam.mPIDkD,  buf+4, 4); send_diag(sid + 0x40, pid); } 
+    else if (pid == 6) { memcpy(&gParam.mPIDmax, buf+4, 4); send_diag(sid + 0x40, pid); }
+    else if (pid == 7) { memcpy(&gParam.mCANid,  buf+4, 2); send_diag(sid + 0x40, pid); }
     else  { 
       send_diagerr(sid, 0x12); // subfuncton not suport ed
       return;
@@ -385,10 +386,11 @@ void handle_diag(uint16_t canId)
 
 void can_loop()
 {
-
   long unsigned int rxId;
   if (CAN_MSGAVAIL == CAN.checkReceive()) // check if data coming
   {
+    digitalWrite(LED2_PIN, LOW);
+
     CAN.readMsgBuf(&rxId, &len, buf); // read data,  len: data length, buf: data buf
     uint16_t id = 0x07FF & rxId;
     if (id == 0x07DF)
@@ -434,17 +436,26 @@ void can_loop()
       memcpy(&gParam.mPIDmax, buf+4, 4);
       set_pid();
     }
-
-    // Serial.print("CAN RX ");
-    // Serial.print(rxId, HEX);
-    // Serial.print(": ");
-    // for (int i = 0; i < len; i++) // print the data
-    // {
-    //   Serial.print(buf[i], HEX);
-    //   Serial.print(" ");
-    // }
-    // Serial.println();
   }
+}
+
+void button_loop()
+{ 
+  static uint32_t sBeginPress = 0;
+  if (digitalRead(BTN_PIN))
+  {
+    sBeginPress = 0;
+  } else 
+  {
+    if (sBeginPress == 0) { sBeginPress = millis(); }
+    else if (sBeginPress == 0xFFFFFFFF) {}
+    else if ((millis() - sBeginPress) >= 1000)
+    {
+      gDiagSession = gDiagSession == 0 ? 1 : 0;
+      sBeginPress = 0xFFFFFFFF;
+    }
+  }
+  digitalWrite(LED1_PIN, gDiagSession == 0 ? HIGH : LOW);
 }
 
 
@@ -472,13 +483,14 @@ void loop()
   }
 
   can_loop();
-
+  button_loop();
 
   static unsigned long sLast10ms = 0;
   if (millis() > (sLast10ms + 10))
   {
     sLast10ms = millis();
-    
+    digitalWrite(LED2_PIN, HIGH);
+
 
     buf[0] = sign(gPWM);
     buf[1] = abs(gPWM);
@@ -486,6 +498,14 @@ void loop()
     buf[3] = 0;
     memcpy(buf+4, &count, 4);
     CAN.sendMsgBuf(gParam.mCANid + 0x10, 0, 8, buf);
+
+    // DEBUG MSG
+    buf[0] = digitalRead(BTN_PIN);
+    buf[1] = gDiagSession;       
+    memcpy(buf+4, &sLast10ms, 4);
+
+    CAN.sendMsgBuf(gParam.mCANid + 0x0F, 0, 8, buf);
+
     return;
   }
 
