@@ -18,7 +18,6 @@ struct error_counters
   uint16_t mEncoderMisses = 0;
 };
 
-
 extern uint8_t gDiagSession;
 extern struct global_param_type gParam;
 extern struct error_counters gDTC;
