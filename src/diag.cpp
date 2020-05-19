@@ -4,6 +4,7 @@
 
 uint8_t gDiagSession = 0;
 struct global_param_type gParam;
+struct error_counters gDTC;
 
 static uint8_t buf[8];
 extern MCP_CAN CAN;
@@ -16,6 +17,13 @@ void diagSend(uint8_t sid, uint16_t pid)
     CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
 }
 
+void diagSend(uint8_t sid, uint16_t pid, uint8_t data1, uint8_t data2, uint8_t data3, uint8_t data4)
+{
+    buf[0] = 0x00 + 7; buf[1] = sid;
+    buf[2] = pid >> 8;  buf[3] = pid & 0x00FF;
+    buf[4] = data1; buf[5] = data2; buf[6] = data3; buf[7] = data4; 
+    CAN.sendMsgBuf(0x780 + gParam.mNodeID, 0, 8, buf);
+}
 void diagSend_u8(uint8_t sid, uint16_t pid, uint8_t data)
 {
     buf[0] = 0x00 + 4; buf[1] = sid;
@@ -103,6 +111,7 @@ bool diagHandleMessage(uint16_t canId, uint8_t inbuf[])
     else if (pid == 5) { diagSend    (sid + 0x40, pid, gParam.mPIDkD);}
     else if (pid == 6) { diagSend    (sid + 0x40, pid, gParam.mPIDmax);}
     else if (pid == 7) { diagSend_u16(sid + 0x40, pid, gParam.mCANid);}
+    else if (pid == 8) { diagSend    (sid + 0x40, pid, gParam.mCycleStatus1, gParam.mCycleStatus2, 0, 0);}
     else  { diagSendErr(sid, 0x12); // subfunction not supported
     }    
   }
@@ -119,6 +128,7 @@ bool diagHandleMessage(uint16_t canId, uint8_t inbuf[])
     else if (pid == 5) { memcpy(&gParam.mPIDkD,  inbuf+4, sizeof(gParam.mPIDkD));  diagSend(sid + 0x40, pid); } 
     else if (pid == 6) { memcpy(&gParam.mPIDmax, inbuf+4, sizeof(gParam.mPIDmax)); diagSend(sid + 0x40, pid); }
     else if (pid == 7) { memcpy(&gParam.mCANid,  inbuf+4, sizeof(gParam.mCANid));  diagSend(sid + 0x40, pid); }
+    else if (pid == 8) { gParam.mCycleStatus1 = inbuf[4]; gParam.mCycleStatus2 = inbuf[5];  diagSend(sid + 0x40, pid); }
     else  { 
       diagSendErr(sid, 0x12); // subfuncton not suport ed
       return false;

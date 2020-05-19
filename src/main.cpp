@@ -104,15 +104,6 @@ float calc_pid(float current)
   }
 
   sResult += gParam.mPIDkD * (error - sLastError) / dt; // D
-
-  // Serial.print("calc_pid: e=");
-  // Serial.print(error);
-  // Serial.print(" I=");
-  // Serial.print(sIntegral);
-  // Serial.print(" res=");
-  // Serial.print(sResult);
-  // Serial.println("");
-
   sLastError = error;
   sResult = constrain(sResult, -gParam.mPIDmax, gParam.mPIDmax);
   if (abs(sResult) < 0.1 * gParam.mPIDmax)
@@ -341,13 +332,14 @@ void can_loop()
   }
 }
 
-void button_loop()
+void buttonLoop()
 { 
   static uint32_t sBeginPress = 0;
   if (digitalRead(BTN_PIN))
   {
     sBeginPress = 0;
-  } else 
+  } 
+  else 
   {
     if (sBeginPress == 0) { sBeginPress = millis(); }
     else if (sBeginPress == 0xFFFFFFFF) {}
@@ -361,22 +353,22 @@ void button_loop()
 }
 
 
-void loop_vbat()
+void vBatLoop()
 {
-  static float gAnalogReference = 5;
+  static bool gAnalogReference5V = true;
   short v = analogRead(VBAT_PIN);
-  float vbat = (float)v * gAnalogReference * 11.6 / 1023;
+  float vbat = (float)v * (gAnalogReference5V ? 5.0 : 1.1) * 11.6 / 1023;
 
   gVBat = 0.1 * vbat + 0.9 * gVBat;
 
   if (v > 900)
   {
     analogReference(DEFAULT);
-    gAnalogReference = 5;
+    gAnalogReference5V = true;
   } else if (v < 180)
   {
     analogReference(INTERNAL);
-    gAnalogReference = 1.1;
+    gAnalogReference5V = false;
   }
 
 }
@@ -388,15 +380,16 @@ void loop()
 
   if (gEncoderError)
   {
-    Serial.println("ENCODER ERROR");
+    gDTC.mEncoderMisses += 1;
     gEncoderError = false;
   }
+
   if (millis() >= gTimeOut)
   {
     setPwm(0, 0);
     gMode = 0;
     gTimeOut = -1;
-    Serial.println("TIMEOUT!");
+    //Serial.println("TIMEOUT!");
   }
 
   if (gMode == 1) {
@@ -406,16 +399,19 @@ void loop()
   }
 
   can_loop();
-  button_loop();
+  buttonLoop();
 
 
 
-
+  static unsigned long sLastStatus1 = 0;
+  static unsigned long sLastStatus2 = 0;
   static unsigned long sLast10ms = 0;
-  if (millis() > (sLast10ms + 10))
+  static unsigned long sLast100ms = 0;
+  static unsigned long sLast1s = 0;
+
+  if (millis() > (sLastStatus1 + (uint32_t)gParam.mCycleStatus1))
   {
-    sLast10ms = millis();
-    digitalWrite(LED2_PIN, HIGH);
+    sLastStatus1 = millis();
 
 
     buf[0] = sign(gPWM);
@@ -429,32 +425,28 @@ void loop()
     buf[0] = digitalRead(BTN_PIN);
     buf[1] = gDiagSession;       
     //buf[2] = (uint8_t)gAnalogReference;
-    memcpy(buf+4, &sLast10ms, 4);
-
+    memcpy(buf+4, &sLastStatus1, 4);
     CAN.sendMsgBuf(gParam.mCANid + 0x0F, 0, 8, buf);
-
-    return;
   }
-
-
-
-  static unsigned long sLast100ms = 3;
-  if (millis() > (sLast100ms + 100))
+  else if (millis() > (sLastStatus2 + (uint32_t)gParam.mCycleStatus2))
   {
-    sLast100ms = millis();
-    loop_vbat();
-  }
-
-
-  static unsigned long sLast1s = 0;
-  if (millis() > (sLast1s + 100))
-  {
-    sLast1s = millis();
-   
-
+    sLastStatus2 = millis();
     memcpy(buf, &gVBat, 4);
     memcpy(buf+4, &gTargetPosition, 4);
-
     CAN.sendMsgBuf(gParam.mCANid+0x11, 0, 8, buf);
+  }
+  else if (millis() > (sLast10ms + 100))
+  {
+    sLast10ms = millis();
+    digitalWrite(LED2_PIN, HIGH);
+  } 
+  else if (millis() > (sLast100ms + 100))
+  {
+    sLast100ms = millis();
+    vBatLoop();
+  }
+  else if (millis() > (sLast1s + 100))
+  {
+    sLast1s = millis();   
   }
 }
