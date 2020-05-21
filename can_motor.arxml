@@ -2,7 +2,7 @@
 <AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
   <AR-PACKAGES>
     <AR-PACKAGE>
-      <SHORT-NAME>PythonEtreeGenerated</SHORT-NAME>
+      <SHORT-NAME>ETree</SHORT-NAME>
       <AR-PACKAGES>
         <AR-PACKAGE>
           <SHORT-NAME>SYSTEM</SHORT-NAME>
@@ -25,23 +25,26 @@
                       <SHORT-NAME>CAN_Channel</SHORT-NAME>
                       <COMM-CONNECTORS>
                         <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
-                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1</COMMUNICATION-CONNECTOR-REF>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/ETree/ECU_INSTANCES/Main/Connector_Main</COMMUNICATION-CONNECTOR-REF>
                         </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
                         <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
-                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main</COMMUNICATION-CONNECTOR-REF>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1</COMMUNICATION-CONNECTOR-REF>
+                        </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                        <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2</COMMUNICATION-CONNECTOR-REF>
                         </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
                       </COMM-CONNECTORS>
                       <FRAME-TRIGGERINGS>
                         <CAN-FRAME-TRIGGERING>
                           <SHORT-NAME>FrameTriggering_PWM</SHORT-NAME>
                           <FRAME-PORT-REFS>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_PWM</FRAME-PORT-REF>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_RX_PWM</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_PWM</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_RX_PWM</FRAME-PORT-REF>
                           </FRAME-PORT-REFS>
-                          <FRAME-REF DEST="CAN-FRAME">/PythonEtreeGenerated/FRAME/PWM</FRAME-REF>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/PWM</FRAME-REF>
                           <PDU-TRIGGERINGS>
                             <PDU-TRIGGERING-REF-CONDITIONAL>
-                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_PWM</PDU-TRIGGERING-REF>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_PWM</PDU-TRIGGERING-REF>
                             </PDU-TRIGGERING-REF-CONDITIONAL>
                           </PDU-TRIGGERINGS>
                           <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
@@ -51,13 +54,13 @@
                         <CAN-FRAME-TRIGGERING>
                           <SHORT-NAME>FrameTriggering_Position</SHORT-NAME>
                           <FRAME-PORT-REFS>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_Position</FRAME-PORT-REF>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_RX_Position</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_Position</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_RX_Position</FRAME-PORT-REF>
                           </FRAME-PORT-REFS>
-                          <FRAME-REF DEST="CAN-FRAME">/PythonEtreeGenerated/FRAME/Position</FRAME-REF>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Position</FRAME-REF>
                           <PDU-TRIGGERINGS>
                             <PDU-TRIGGERING-REF-CONDITIONAL>
-                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Position</PDU-TRIGGERING-REF>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Position</PDU-TRIGGERING-REF>
                             </PDU-TRIGGERING-REF-CONDITIONAL>
                           </PDU-TRIGGERINGS>
                           <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
@@ -67,13 +70,13 @@
                         <CAN-FRAME-TRIGGERING>
                           <SHORT-NAME>FrameTriggering_Speed</SHORT-NAME>
                           <FRAME-PORT-REFS>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_Speed</FRAME-PORT-REF>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_RX_Speed</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_Speed</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_RX_Speed</FRAME-PORT-REF>
                           </FRAME-PORT-REFS>
-                          <FRAME-REF DEST="CAN-FRAME">/PythonEtreeGenerated/FRAME/Speed</FRAME-REF>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Speed</FRAME-REF>
                           <PDU-TRIGGERINGS>
                             <PDU-TRIGGERING-REF-CONDITIONAL>
-                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Speed</PDU-TRIGGERING-REF>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Speed</PDU-TRIGGERING-REF>
                             </PDU-TRIGGERING-REF-CONDITIONAL>
                           </PDU-TRIGGERINGS>
                           <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
@@ -83,13 +86,13 @@
                         <CAN-FRAME-TRIGGERING>
                           <SHORT-NAME>FrameTriggering_Status1</SHORT-NAME>
                           <FRAME-PORT-REFS>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_TX_Status1</FRAME-PORT-REF>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_RX_Status1</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_TX_Status1</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_RX_Status1</FRAME-PORT-REF>
                           </FRAME-PORT-REFS>
-                          <FRAME-REF DEST="CAN-FRAME">/PythonEtreeGenerated/FRAME/Status1</FRAME-REF>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Status1</FRAME-REF>
                           <PDU-TRIGGERINGS>
                             <PDU-TRIGGERING-REF-CONDITIONAL>
-                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Status1</PDU-TRIGGERING-REF>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Status1</PDU-TRIGGERING-REF>
                             </PDU-TRIGGERING-REF-CONDITIONAL>
                           </PDU-TRIGGERINGS>
                           <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
@@ -99,233 +102,508 @@
                         <CAN-FRAME-TRIGGERING>
                           <SHORT-NAME>FrameTriggering_Status2</SHORT-NAME>
                           <FRAME-PORT-REFS>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_TX_Status2</FRAME-PORT-REF>
-                            <FRAME-PORT-REF DEST="FRAME-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_RX_Status2</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/FramePort_Motor1_TX_Status2</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_RX_Status2</FRAME-PORT-REF>
                           </FRAME-PORT-REFS>
-                          <FRAME-REF DEST="CAN-FRAME">/PythonEtreeGenerated/FRAME/Status2</FRAME-REF>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Status2</FRAME-REF>
                           <PDU-TRIGGERINGS>
                             <PDU-TRIGGERING-REF-CONDITIONAL>
-                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Status2</PDU-TRIGGERING-REF>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Status2</PDU-TRIGGERING-REF>
                             </PDU-TRIGGERING-REF-CONDITIONAL>
                           </PDU-TRIGGERINGS>
                           <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
                           <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
                           <IDENTIFIER>265</IDENTIFIER>
                         </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FrameTriggering_PWM</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_PWM</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/FramePort_Motor2_RX_PWM</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/PWM</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_PWM</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>288</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FrameTriggering_Position</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_Position</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/FramePort_Motor2_RX_Position</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Position</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Position</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>289</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FrameTriggering_Speed</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_TX_Speed</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/FramePort_Motor2_RX_Speed</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Speed</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Speed</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>290</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FrameTriggering_Status1</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/FramePort_Motor2_TX_Status1</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_RX_Status1</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Status1</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Status1</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>296</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FrameTriggering_Status2</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/FramePort_Motor2_TX_Status2</FRAME-PORT-REF>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/FramePort_Main_RX_Status2</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/ETree/FRAME/Status2</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/PduTriggering_Status2</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>297</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
                       </FRAME-TRIGGERINGS>
                       <I-SIGNAL-TRIGGERINGS>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Direction</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Direction</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Direction</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Direction</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_Direction</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Direction</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Direction</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Duty</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Duty</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Duty</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Duty</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_Duty</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Duty</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Duty</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_none1</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_none1</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_none1</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_none1</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_none1</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_none1</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_none1</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/none1</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/none1</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Timeout</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Timeout</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Timeout</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_Timeout</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_Timeout</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_target_pos</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_target_pos</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_target_pos</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_target_pos</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_target_pos</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_target_pos</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_target_pos</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/target_pos</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_pos</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Timeout</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS/>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_target_speed</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_target_speed</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_target_speed</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_target_speed</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_RX_target_speed</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_TX_target_speed</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_RX_target_speed</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/target_speed</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_speed</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Timeout</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS/>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Direction</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS/>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Direction</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Duty</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS/>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Duty</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Mode</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Mode</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Mode</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Mode</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Mode</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_Mode</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Mode</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Mode</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Mode</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_None2</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_None2</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_None2</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_None2</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_None2</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_None2</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_None2</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/None2</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/None2</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Position</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Position</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Position</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Position</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Position</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_Position</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Position</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Position</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Position</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_VBAT</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_VBAT</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_VBAT</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_VBAT</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_VBAT</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_VBAT</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_VBAT</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/VBAT</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/VBAT</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                         <I-SIGNAL-TRIGGERING>
                           <SHORT-NAME>SignalTriggering_Target</SHORT-NAME>
                           <I-SIGNAL-PORT-REFS>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Target</I-SIGNAL-PORT-REF>
-                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Target</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/SignalPort_Motor1_TX_Target</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Target</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/SignalPort_Motor2_TX_Target</I-SIGNAL-PORT-REF>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/SignalPort_Main_RX_Target</I-SIGNAL-PORT-REF>
                           </I-SIGNAL-PORT-REFS>
-                          <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Target</I-SIGNAL-REF>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Target</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Direction</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Duty</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_none1</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/none1</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Timeout</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_target_pos</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_pos</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Timeout</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_target_speed</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_speed</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Timeout</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Direction</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Duty</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Mode</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Mode</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_None2</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/None2</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Position</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Position</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_VBAT</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/VBAT</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>SignalTriggering_Target</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS/>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Target</I-SIGNAL-REF>
                         </I-SIGNAL-TRIGGERING>
                       </I-SIGNAL-TRIGGERINGS>
                       <PDU-TRIGGERINGS>
                         <PDU-TRIGGERING>
                           <SHORT-NAME>PduTriggering_PWM</SHORT-NAME>
                           <I-PDU-PORT-REFS>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_PWM</I-PDU-PORT-REF>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_RX_PWM</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_PWM</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_RX_PWM</I-PDU-PORT-REF>
                           </I-PDU-PORT-REFS>
-                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/PWM</I-PDU-REF>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/PWM</I-PDU-REF>
                           <I-SIGNAL-TRIGGERINGS>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Direction</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Direction</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Duty</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Duty</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_none1</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_none1</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Direction</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Duty</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_none1</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                           </I-SIGNAL-TRIGGERINGS>
                         </PDU-TRIGGERING>
                         <PDU-TRIGGERING>
                           <SHORT-NAME>PduTriggering_Position</SHORT-NAME>
                           <I-PDU-PORT-REFS>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_Position</I-PDU-PORT-REF>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_RX_Position</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_Position</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_RX_Position</I-PDU-PORT-REF>
                           </I-PDU-PORT-REFS>
-                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Position</I-PDU-REF>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Position</I-PDU-REF>
                           <I-SIGNAL-TRIGGERINGS>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_target_pos</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_target_pos</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_target_pos</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                           </I-SIGNAL-TRIGGERINGS>
                         </PDU-TRIGGERING>
                         <PDU-TRIGGERING>
                           <SHORT-NAME>PduTriggering_Speed</SHORT-NAME>
                           <I-PDU-PORT-REFS>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_Speed</I-PDU-PORT-REF>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_RX_Speed</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_Speed</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_RX_Speed</I-PDU-PORT-REF>
                           </I-PDU-PORT-REFS>
-                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Speed</I-PDU-REF>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Speed</I-PDU-REF>
                           <I-SIGNAL-TRIGGERINGS>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_target_speed</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_target_speed</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_target_speed</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Timeout</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                           </I-SIGNAL-TRIGGERINGS>
                         </PDU-TRIGGERING>
                         <PDU-TRIGGERING>
                           <SHORT-NAME>PduTriggering_Status1</SHORT-NAME>
                           <I-PDU-PORT-REFS>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_TX_Status1</I-PDU-PORT-REF>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_RX_Status1</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_TX_Status1</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_RX_Status1</I-PDU-PORT-REF>
                           </I-PDU-PORT-REFS>
-                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Status1</I-PDU-REF>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status1</I-PDU-REF>
                           <I-SIGNAL-TRIGGERINGS>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Direction</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Direction</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Duty</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Duty</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Mode</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Mode</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_None2</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_None2</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Position</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Position</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Direction</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Duty</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Mode</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_None2</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Position</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                           </I-SIGNAL-TRIGGERINGS>
                         </PDU-TRIGGERING>
                         <PDU-TRIGGERING>
                           <SHORT-NAME>PduTriggering_Status2</SHORT-NAME>
                           <I-PDU-PORT-REFS>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_TX_Status2</I-PDU-PORT-REF>
-                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/PythonEtreeGenerated/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_RX_Status2</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor1/Connector_Motor1/PduPort_Motor1_TX_Status2</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_RX_Status2</I-PDU-PORT-REF>
                           </I-PDU-PORT-REFS>
-                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Status2</I-PDU-REF>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status2</I-PDU-REF>
                           <I-SIGNAL-TRIGGERINGS>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_VBAT</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_VBAT</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                             <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
-                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/PythonEtreeGenerated/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Target</I-SIGNAL-TRIGGERING-REF>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Target</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_VBAT</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/ETree/CAN_DC_Motor/CAN_Cluster/CAN_Channel/SignalTriggering_Target</I-SIGNAL-TRIGGERING-REF>
                             </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
                           </I-SIGNAL-TRIGGERINGS>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PduTriggering_PWM</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_PWM</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/PduPort_Motor2_RX_PWM</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/PWM</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS/>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PduTriggering_Position</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_Position</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/PduPort_Motor2_RX_Position</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Position</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS/>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PduTriggering_Speed</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_TX_Speed</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/PduPort_Motor2_RX_Speed</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Speed</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS/>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PduTriggering_Status1</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/PduPort_Motor2_TX_Status1</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_RX_Status1</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status1</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS/>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PduTriggering_Status2</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Motor2/Connector_Motor2/PduPort_Motor2_TX_Status2</I-PDU-PORT-REF>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ETree/ECU_INSTANCES/Main/Connector_Main/PduPort_Main_RX_Status2</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status2</I-PDU-REF>
+                          <I-SIGNAL-TRIGGERINGS/>
                         </PDU-TRIGGERING>
                       </PDU-TRIGGERINGS>
                     </CAN-PHYSICAL-CHANNEL>
@@ -340,6 +618,230 @@
         <AR-PACKAGE>
           <SHORT-NAME>ECU_INSTANCES</SHORT-NAME>
           <ELEMENTS>
+            <ECU-INSTANCE>
+              <SHORT-NAME>Main</SHORT-NAME>
+              <ASSOCIATED-COM-I-PDU-GROUP-REFS/>
+              <COMM-CONTROLLERS>
+                <CAN-COMMUNICATION-CONTROLLER>
+                  <SHORT-NAME>Controller_Main</SHORT-NAME>
+                  <CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                    <CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                      <CAN-CONTROLLER-ATTRIBUTES>
+                        <CAN-CONTROLLER-CONFIGURATION/>
+                      </CAN-CONTROLLER-ATTRIBUTES>
+                    </CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
+                  </CAN-COMMUNICATION-CONTROLLER-VARIANTS>
+                </CAN-COMMUNICATION-CONTROLLER>
+              </COMM-CONTROLLERS>
+              <CONNECTORS>
+                <CAN-COMMUNICATION-CONNECTOR>
+                  <SHORT-NAME>Connector_Main</SHORT-NAME>
+                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/ETree/ECU_INSTANCES/Main/Controller_Main</COMM-CONTROLLER-REF>
+                  <ECU-COMM-PORT-INSTANCES>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_TX_PWM</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_TX_PWM</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Direction</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Duty</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_none1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_TX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_TX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_target_pos</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_TX_Speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_TX_Speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_target_speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_RX_Status1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_RX_Status1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Direction</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Duty</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Mode</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_None2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_RX_Status2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_RX_Status2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_VBAT</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Target</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_TX_PWM</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_TX_PWM</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Direction</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Duty</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_none1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_TX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_TX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_target_pos</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_TX_Speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_TX_Speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_target_speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_RX_Status1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_RX_Status1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Direction</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Duty</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Mode</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_None2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Main_RX_Status2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Main_RX_Status2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_VBAT</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Main_RX_Target</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                  </ECU-COMM-PORT-INSTANCES>
+                </CAN-COMMUNICATION-CONNECTOR>
+              </CONNECTORS>
+            </ECU-INSTANCE>
             <ECU-INSTANCE>
               <SHORT-NAME>Motor1</SHORT-NAME>
               <ASSOCIATED-COM-I-PDU-GROUP-REFS/>
@@ -358,7 +860,7 @@
               <CONNECTORS>
                 <CAN-COMMUNICATION-CONNECTOR>
                   <SHORT-NAME>Connector_Motor1</SHORT-NAME>
-                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/PythonEtreeGenerated/ECU_INSTANCES/Motor1/Controller_Motor1</COMM-CONTROLLER-REF>
+                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/ETree/ECU_INSTANCES/Motor1/Controller_Motor1</COMM-CONTROLLER-REF>
                   <ECU-COMM-PORT-INSTANCES>
                     <FRAME-PORT>
                       <SHORT-NAME>FramePort_Motor1_RX_PWM</SHORT-NAME>
@@ -465,11 +967,11 @@
               </CONNECTORS>
             </ECU-INSTANCE>
             <ECU-INSTANCE>
-              <SHORT-NAME>Main</SHORT-NAME>
+              <SHORT-NAME>Motor2</SHORT-NAME>
               <ASSOCIATED-COM-I-PDU-GROUP-REFS/>
               <COMM-CONTROLLERS>
                 <CAN-COMMUNICATION-CONTROLLER>
-                  <SHORT-NAME>Controller_Main</SHORT-NAME>
+                  <SHORT-NAME>Controller_Motor2</SHORT-NAME>
                   <CAN-COMMUNICATION-CONTROLLER-VARIANTS>
                     <CAN-COMMUNICATION-CONTROLLER-CONDITIONAL>
                       <CAN-CONTROLLER-ATTRIBUTES>
@@ -481,108 +983,108 @@
               </COMM-CONTROLLERS>
               <CONNECTORS>
                 <CAN-COMMUNICATION-CONNECTOR>
-                  <SHORT-NAME>Connector_Main</SHORT-NAME>
-                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/PythonEtreeGenerated/ECU_INSTANCES/Main/Controller_Main</COMM-CONTROLLER-REF>
+                  <SHORT-NAME>Connector_Motor2</SHORT-NAME>
+                  <COMM-CONTROLLER-REF DEST="CAN-COMMUNICATION-CONTROLLER">/ETree/ECU_INSTANCES/Motor2/Controller_Motor2</COMM-CONTROLLER-REF>
                   <ECU-COMM-PORT-INSTANCES>
                     <FRAME-PORT>
-                      <SHORT-NAME>FramePort_Main_TX_PWM</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </FRAME-PORT>
-                    <I-PDU-PORT>
-                      <SHORT-NAME>PduPort_Main_TX_PWM</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-PDU-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_Direction</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_Duty</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_none1</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <FRAME-PORT>
-                      <SHORT-NAME>FramePort_Main_TX_Position</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </FRAME-PORT>
-                    <I-PDU-PORT>
-                      <SHORT-NAME>PduPort_Main_TX_Position</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-PDU-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_target_pos</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <FRAME-PORT>
-                      <SHORT-NAME>FramePort_Main_TX_Speed</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </FRAME-PORT>
-                    <I-PDU-PORT>
-                      <SHORT-NAME>PduPort_Main_TX_Speed</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-PDU-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_target_speed</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_TX_Timeout</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <FRAME-PORT>
-                      <SHORT-NAME>FramePort_Main_RX_Status1</SHORT-NAME>
+                      <SHORT-NAME>FramePort_Motor2_RX_PWM</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </FRAME-PORT>
                     <I-PDU-PORT>
-                      <SHORT-NAME>PduPort_Main_RX_Status1</SHORT-NAME>
+                      <SHORT-NAME>PduPort_Motor2_RX_PWM</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-PDU-PORT>
                     <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_Direction</SHORT-NAME>
+                      <SHORT-NAME>SignalPort_Motor2_RX_Direction</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-SIGNAL-PORT>
                     <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_Duty</SHORT-NAME>
+                      <SHORT-NAME>SignalPort_Motor2_RX_Duty</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-SIGNAL-PORT>
                     <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_Mode</SHORT-NAME>
+                      <SHORT-NAME>SignalPort_Motor2_RX_none1</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-SIGNAL-PORT>
                     <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_None2</SHORT-NAME>
-                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
-                    </I-SIGNAL-PORT>
-                    <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_Position</SHORT-NAME>
+                      <SHORT-NAME>SignalPort_Motor2_RX_Timeout</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-SIGNAL-PORT>
                     <FRAME-PORT>
-                      <SHORT-NAME>FramePort_Main_RX_Status2</SHORT-NAME>
+                      <SHORT-NAME>FramePort_Motor2_RX_Position</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </FRAME-PORT>
                     <I-PDU-PORT>
-                      <SHORT-NAME>PduPort_Main_RX_Status2</SHORT-NAME>
+                      <SHORT-NAME>PduPort_Motor2_RX_Position</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-PDU-PORT>
                     <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_VBAT</SHORT-NAME>
+                      <SHORT-NAME>SignalPort_Motor2_RX_target_pos</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
                     </I-SIGNAL-PORT>
                     <I-SIGNAL-PORT>
-                      <SHORT-NAME>SignalPort_Main_RX_Target</SHORT-NAME>
+                      <SHORT-NAME>SignalPort_Motor2_RX_Timeout</SHORT-NAME>
                       <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Motor2_RX_Speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Motor2_RX_Speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_RX_target_speed</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_RX_Timeout</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Motor2_TX_Status1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Motor2_TX_Status1</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_Direction</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_Duty</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_Mode</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_None2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_Position</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <FRAME-PORT>
+                      <SHORT-NAME>FramePort_Motor2_TX_Status2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </FRAME-PORT>
+                    <I-PDU-PORT>
+                      <SHORT-NAME>PduPort_Motor2_TX_Status2</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-PDU-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_VBAT</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                    </I-SIGNAL-PORT>
+                    <I-SIGNAL-PORT>
+                      <SHORT-NAME>SignalPort_Motor2_TX_Target</SHORT-NAME>
+                      <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
                     </I-SIGNAL-PORT>
                   </ECU-COMM-PORT-INSTANCES>
                 </CAN-COMMUNICATION-CONNECTOR>
@@ -600,7 +1102,7 @@
                 <PDU-TO-FRAME-MAPPING>
                   <SHORT-NAME>PduToFrameMapping_PWM_PWM</SHORT-NAME>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
-                  <PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/PWM</PDU-REF>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/PWM</PDU-REF>
                   <START-POSITION>0</START-POSITION>
                 </PDU-TO-FRAME-MAPPING>
               </PDU-TO-FRAME-MAPPINGS>
@@ -612,7 +1114,7 @@
                 <PDU-TO-FRAME-MAPPING>
                   <SHORT-NAME>PduToFrameMapping_Position_Position</SHORT-NAME>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
-                  <PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Position</PDU-REF>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Position</PDU-REF>
                   <START-POSITION>0</START-POSITION>
                 </PDU-TO-FRAME-MAPPING>
               </PDU-TO-FRAME-MAPPINGS>
@@ -624,7 +1126,7 @@
                 <PDU-TO-FRAME-MAPPING>
                   <SHORT-NAME>PduToFrameMapping_Speed_Speed</SHORT-NAME>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
-                  <PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Speed</PDU-REF>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Speed</PDU-REF>
                   <START-POSITION>0</START-POSITION>
                 </PDU-TO-FRAME-MAPPING>
               </PDU-TO-FRAME-MAPPINGS>
@@ -636,7 +1138,7 @@
                 <PDU-TO-FRAME-MAPPING>
                   <SHORT-NAME>PduToFrameMapping_Status1_Status1</SHORT-NAME>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
-                  <PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Status1</PDU-REF>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status1</PDU-REF>
                   <START-POSITION>0</START-POSITION>
                 </PDU-TO-FRAME-MAPPING>
               </PDU-TO-FRAME-MAPPINGS>
@@ -648,7 +1150,67 @@
                 <PDU-TO-FRAME-MAPPING>
                   <SHORT-NAME>PduToFrameMapping_Status2_Status2</SHORT-NAME>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
-                  <PDU-REF DEST="I-SIGNAL-I-PDU">/PythonEtreeGenerated/PDUS/Status2</PDU-REF>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status2</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>PWM</SHORT-NAME>
+              <FRAME-LENGTH>6</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_PWM_PWM</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/PWM</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>Position</SHORT-NAME>
+              <FRAME-LENGTH>6</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_Position_Position</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Position</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>Speed</SHORT-NAME>
+              <FRAME-LENGTH>6</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_Speed_Speed</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Speed</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>Status1</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_Status1_Status1</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status1</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>Status2</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrameMapping_Status2_Status2</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/ETree/PDUS/Status2</PDU-REF>
                   <START-POSITION>0</START-POSITION>
                 </PDU-TO-FRAME-MAPPING>
               </PDU-TO-FRAME-MAPPINGS>
@@ -664,25 +1226,49 @@
               <I-SIGNAL-TO-PDU-MAPPINGS>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_PWM_Direction</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Direction</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>0</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_PWM_Duty</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Duty</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>8</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_PWM_none1</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/none1</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/none1</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>16</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_PWM_Timeout</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>32</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_PWM_Direction</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_PWM_Duty</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>8</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_PWM_none1</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/none1</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>16</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_PWM_Timeout</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>32</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
@@ -694,13 +1280,25 @@
               <I-SIGNAL-TO-PDU-MAPPINGS>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Position_target_pos</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/target_pos</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_pos</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>0</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Position_Timeout</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>32</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Position_target_pos</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_pos</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Position_Timeout</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>32</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
@@ -712,13 +1310,25 @@
               <I-SIGNAL-TO-PDU-MAPPINGS>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Speed_target_speed</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/target_speed</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_speed</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>0</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Speed_Timeout</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>32</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Speed_target_speed</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/target_speed</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Speed_Timeout</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Timeout</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>32</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
@@ -730,31 +1340,61 @@
               <I-SIGNAL-TO-PDU-MAPPINGS>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status1_Direction</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Direction</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>0</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status1_Duty</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Duty</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>8</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status1_Mode</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Mode</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Mode</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>16</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status1_None2</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/None2</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/None2</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>24</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status1_Position</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Position</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Position</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>32</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status1_Direction</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Direction</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status1_Duty</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Duty</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>8</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status1_Mode</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Mode</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>16</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status1_None2</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/None2</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>24</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status1_Position</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Position</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>32</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
@@ -766,17 +1406,54 @@
               <I-SIGNAL-TO-PDU-MAPPINGS>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status2_VBAT</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/VBAT</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/VBAT</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>0</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
                 <I-SIGNAL-TO-I-PDU-MAPPING>
                   <SHORT-NAME>SignalPduMapping_Status2_Target</SHORT-NAME>
-                  <I-SIGNAL-REF DEST="I-SIGNAL">/PythonEtreeGenerated/I_SIGNALS/Target</I-SIGNAL-REF>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Target</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>32</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status2_VBAT</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/VBAT</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <START-POSITION>0</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SignalPduMapping_Status2_Target</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/ETree/I_SIGNALS/Target</I-SIGNAL-REF>
                   <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
                   <START-POSITION>32</START-POSITION>
                 </I-SIGNAL-TO-I-PDU-MAPPING>
               </I-SIGNAL-TO-PDU-MAPPINGS>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>PWM</SHORT-NAME>
+              <LENGTH>6</LENGTH>
+              <I-SIGNAL-TO-PDU-MAPPINGS/>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>Position</SHORT-NAME>
+              <LENGTH>6</LENGTH>
+              <I-SIGNAL-TO-PDU-MAPPINGS/>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>Speed</SHORT-NAME>
+              <LENGTH>6</LENGTH>
+              <I-SIGNAL-TO-PDU-MAPPINGS/>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>Status1</SHORT-NAME>
+              <LENGTH>8</LENGTH>
+              <I-SIGNAL-TO-PDU-MAPPINGS/>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU>
+              <SHORT-NAME>Status2</SHORT-NAME>
+              <LENGTH>8</LENGTH>
+              <I-SIGNAL-TO-PDU-MAPPINGS/>
             </I-SIGNAL-I-PDU>
           </ELEMENTS>
         </AR-PACKAGE>
@@ -790,11 +1467,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/SINT8</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT8</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Direction</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Direction</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Duty</SHORT-NAME>
@@ -803,11 +1480,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Duty</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Duty</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>none1</SHORT-NAME>
@@ -816,11 +1493,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/none1</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/none1</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Timeout</SHORT-NAME>
@@ -829,11 +1506,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>target_pos</SHORT-NAME>
@@ -842,11 +1519,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/target_pos</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/target_pos</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Timeout</SHORT-NAME>
@@ -855,11 +1532,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>target_speed</SHORT-NAME>
@@ -868,11 +1545,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/target_speed</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/target_speed</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Timeout</SHORT-NAME>
@@ -881,11 +1558,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Direction</SHORT-NAME>
@@ -894,11 +1571,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/SINT8</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT8</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Direction</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Direction</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Duty</SHORT-NAME>
@@ -907,11 +1584,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Duty</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Duty</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Mode</SHORT-NAME>
@@ -920,11 +1597,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Mode</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Mode</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>None2</SHORT-NAME>
@@ -933,11 +1610,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/None2</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/None2</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Position</SHORT-NAME>
@@ -946,11 +1623,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Position</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Position</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>VBAT</SHORT-NAME>
@@ -959,11 +1636,11 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/IEEE754</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/IEEE754</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/VBAT</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/VBAT</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
             <I-SIGNAL>
               <SHORT-NAME>Target</SHORT-NAME>
@@ -972,11 +1649,206 @@
               <NETWORK-REPRESENTATION-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/PythonEtreeGenerated/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </NETWORK-REPRESENTATION-PROPS>
-              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/PythonEtreeGenerated/SYSTEM_SIGNALS/Target</SYSTEM-SIGNAL-REF>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Target</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Direction</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT8</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Direction</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Duty</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Duty</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>none1</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>16</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/none1</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Timeout</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>16</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>target_pos</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>32</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/target_pos</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Timeout</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>16</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>target_speed</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>32</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/target_speed</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Timeout</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>16</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT16</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Timeout</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Direction</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT8</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Direction</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Duty</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Duty</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Mode</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Mode</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>None2</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/UINT8</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/None2</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Position</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>32</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Position</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>VBAT</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>32</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/IEEE754</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/VBAT</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>Target</SHORT-NAME>
+              <DATA-TYPE-POLICY>OVERRIDE</DATA-TYPE-POLICY>
+              <LENGTH>32</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/ETree/BASE_TYPES/SINT32</BASE-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/ETree/SYSTEM_SIGNALS/Target</SYSTEM-SIGNAL-REF>
             </I-SIGNAL>
           </ELEMENTS>
         </AR-PACKAGE>
@@ -1087,7 +1959,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1097,7 +1969,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1107,7 +1979,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1117,7 +1989,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1127,7 +1999,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1137,7 +2009,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1147,7 +2019,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1157,7 +2029,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1167,7 +2039,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1177,7 +2049,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1187,7 +2059,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1197,7 +2069,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1207,7 +2079,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1217,7 +2089,7 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
@@ -1227,7 +2099,157 @@
               <PHYSICAL-PROPS>
                 <SW-DATA-DEF-PROPS-VARIANTS>
                   <SW-DATA-DEF-PROPS-CONDITIONAL>
-                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/PythonEtreeGenerated/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Direction</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Duty</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>none1</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Timeout</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>target_pos</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Timeout</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>target_speed</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Timeout</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Direction</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Duty</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Mode</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>None2</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Position</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>VBAT</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </PHYSICAL-PROPS>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+              <SHORT-NAME>Target</SHORT-NAME>
+              <PHYSICAL-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/ETree/COMPUMETHODS/FACTOR_1</COMPU-METHOD-REF>
                   </SW-DATA-DEF-PROPS-CONDITIONAL>
                 </SW-DATA-DEF-PROPS-VARIANTS>
               </PHYSICAL-PROPS>
