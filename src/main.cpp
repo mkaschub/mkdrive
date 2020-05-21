@@ -2,6 +2,7 @@
 #include "mcp_can.h"
 #include <EEPROM.h>
 #include "diag.h"
+#include "pid.h"
 
 #define ENCODER_A 3
 #define ENCODER_B 4
@@ -19,7 +20,6 @@ static float gVBat = 12;
 unsigned char gCanRxBuffer[8];
 long gEncoderPosition = 0;
 bool gEncoderError = false;
-float gPIDtarget = 0;
 
 MCP_CAN CAN(10); // CS = pin 10
 
@@ -35,13 +35,21 @@ void print_eeprom() {
   Serial.print("mNodeID="); Serial.println(gParam.mNodeID);
 }
 
-
+void paramCheck()
+{
+  if (gParam.mNodeID < 1) gParam.mNodeID = 1;
+  if (gParam.mNodeID > 31) gParam.mNodeID = 31;
+  if (gParam.mCANid > 0x6F0) gParam.mCANid = 0x100;
+  gParam.mCANid &= 0x07F0;
+}
+ 
 void read_eeprom()
 {
   for(size_t i=0; i<sizeof(gParam); i++)
   {
     *(((char*)&gParam) + i) = EEPROM.read(i);
   }
+  paramCheck();
 }
 
 void update_eeprom()
@@ -52,54 +60,6 @@ void update_eeprom()
   }
 }
 
-void pid_setpoint(float target)
-{
-  //pid.setpoint(gTargetPosition); // The "goal" the PID controller tries to "reach"
-  gPIDtarget = target;
-}
-
-float calc_pid(float current)
-{
-  //int motor_value = pid.compute(count);
-
-  static float sIntegral;
-  static float sLastError;
-  static float sResult;
-  static unsigned long sLastTime;
-  
-  if (sLastTime == millis()) return sResult;
-
-  float error = gPIDtarget - current;
-  float dt = (millis() - sLastTime) * 0.001;
-  sLastTime = millis();
-
-  sResult = gParam.mPIDkP * error; // P
-
-  // I
-  if (abs(sResult) >= gParam.mPIDmax) 
-  {
-    sIntegral = 0; // anti windup
-  } 
-  else if (sLastError * error <= 0)
-  {
-    sIntegral = 0; // anti windup
-  }
-  else 
-  {
-    sIntegral += error * dt;
-    sResult += gParam.mPIDkI * sIntegral;
-  }
-
-  sResult += gParam.mPIDkD * (error - sLastError) / dt; // D
-  sLastError = error;
-  sResult = constrain(sResult, -gParam.mPIDmax, gParam.mPIDmax);
-  if (abs(sResult) < 0.1 * gParam.mPIDmax)
-    sResult = 0;
-  if (abs(error) < 5) 
-    sResult = 0;
-
-  return sResult;
-}
 
 void rencoder()
 {
@@ -123,7 +83,7 @@ void rencoder()
   }
 }
 
-void can_filter()
+void canSetupFilter()
 {
   CAN.init_Mask(0, 0, 0x07000000); // 256er Block
   CAN.init_Mask(1, 0, 0x07F00000); // 16er Block
@@ -154,7 +114,7 @@ START_INIT:
   if (CAN_OK == CAN.begin(MCP_STDEXT, CAN_125KBPS, MCP_16MHZ)) // init can bus : baudrate = 500k
   {
     pinMode(CAN0_INT, INPUT);        // Configuring pin for /INT input
-    can_filter();
+    canSetupFilter();
 
     Serial.println("CAN BUS Shield init ok!");
   }
@@ -180,6 +140,7 @@ void setPwm(char mode, byte duty)
   short m = mode * duty;
   if (m == sLast) return;
   sLast = m;
+  gPWM = duty * mode;
   duty = 255 - duty; // PWM zwischen Bremsen und Fahren
   // Serial.print("SetPwm(");
   // Serial.print((int)mode);
@@ -188,27 +149,23 @@ void setPwm(char mode, byte duty)
   // Serial.println(")");
   if (mode == 1) // forward
   {
-    digitalWrite(MOTOR_PWM1, HIGH);
+    digitalWrite(MOTOR_PWM1, HIGH); // alternate forward/brake
     analogWrite(MOTOR_PWM2, duty);
-    gPWM = duty;
   }
   else if (mode == -1) // backward
   {
-    digitalWrite(MOTOR_PWM2, HIGH);
+    digitalWrite(MOTOR_PWM2, HIGH); // alternate backward/brake
     analogWrite(MOTOR_PWM1, duty);
-    gPWM = -duty;
   }
   else if (mode == 0) // coast
   {
     digitalWrite(MOTOR_PWM1, LOW);
     digitalWrite(MOTOR_PWM2, LOW);
-    gPWM = 0;
   }
   else // break
   {
-    digitalWrite(MOTOR_PWM1, HIGH);
+    digitalWrite(MOTOR_PWM1, HIGH); // both low-side MOSFETs on
     digitalWrite(MOTOR_PWM2, HIGH);
-    gPWM = 9999;
   }
 }
 
@@ -221,7 +178,7 @@ byte gMode = 0; // 0:PWM, 1:Position, 2:Speed
 
 void controlPosition()
 {
-  int motor_value = calc_pid(gEncoderPosition);
+  int motor_value = pidCompute(gEncoderPosition);
   setPwm(sign(motor_value), abs(motor_value));
 
   // if (count > gTargetPosition)
@@ -239,7 +196,7 @@ long gSpeedStartPos = 0;
 void controlSpeed()
 {
   gTargetPosition = gSpeedStartPos + gTargetSpeed * 0.001 * (millis() - gSpeedStartTime);
-  pid_setpoint(gTargetPosition);
+  pidSetpoint(gTargetPosition);
   controlPosition();
   // unsigned long sLastCalc = 0;
   
@@ -274,7 +231,7 @@ void can_loop()
       if (diagHandleMessage(id, gCanRxBuffer)) 
       { 
         update_eeprom();
-        can_filter();
+        canSetupFilter();
       }
     }
     if ((rxId & 0x7F0) != gParam.mCANid)
@@ -294,7 +251,7 @@ void can_loop()
     else if (cmd == 1) // Position
     {
       memcpy(&gTargetPosition, gCanRxBuffer, 4);
-      pid_setpoint(gTargetPosition);
+      pidSetpoint(gTargetPosition);
     }
     else if (cmd == 2) // Speed
     {
@@ -302,17 +259,17 @@ void can_loop()
       gSpeedStartTime = millis();
       gSpeedStartPos = gEncoderPosition;
     }
-    else if (cmd == 10) // set kP & k
-    {
-      memcpy(&gParam.mPIDkP, gCanRxBuffer, 4);
-      memcpy(&gParam.mPIDkI, gCanRxBuffer+4, 4);
-    }
+    // else if (cmd == 10) // set kP & k
+    // {
+    //   memcpy(&gParam.mPIDkP, gCanRxBuffer, 4);
+    //   memcpy(&gParam.mPIDkI, gCanRxBuffer+4, 4);
+    // }
 
-    else if (cmd == 11) // set kP & k
-    {
-      memcpy(&gParam.mPIDkD, gCanRxBuffer, 4);
-      memcpy(&gParam.mPIDmax, gCanRxBuffer+4, 4);
-    }
+    // else if (cmd == 11) // set kP & k
+    // {
+    //   memcpy(&gParam.mPIDkD, gCanRxBuffer, 4);
+    //   memcpy(&gParam.mPIDmax, gCanRxBuffer+4, 4);
+    // }
   }
 }
 
@@ -355,7 +312,6 @@ void vBatLoop()
     analogReference(INTERNAL);
     gAnalogReference5V = false;
   }
-
 }
 
 
@@ -369,19 +325,23 @@ void loop()
     gEncoderError = false;
   }
 
+  // Handle timeout specified in CAN commands 
   if (millis() >= gTimeOut)
   {
     setPwm(0, 0);
     gMode = 0;
     gTimeOut = -1;
-    //Serial.println("TIMEOUT!");
   }
 
-  if (gMode == 1) {
+  if (gMode == 1) 
+  {
     controlPosition();
-  } else if (gMode == 2)  {
+  } 
+  else if (gMode == 2)  
+  {
     controlSpeed();
   }
+  // TODO add 
 
   can_loop();
   buttonLoop();

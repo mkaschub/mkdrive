@@ -9,6 +9,8 @@ struct error_counters gDTC;
 static uint8_t buf[8];
 extern MCP_CAN CAN;
 
+
+
 void diagSend(uint8_t sid, uint16_t pid)
 {
     buf[0] = 0x00 + 3; buf[1] = sid;
@@ -98,7 +100,9 @@ bool diagHandleMessage(uint16_t canId, uint8_t inbuf[])
       if(serial == gParam.mSerial)
       {
         gDiagSession = 1;
+        gParam.mNodeID = inbuf[3];
         diagSend_u32(sid + 0x40, gParam.mNodeID, gParam.mSerial);
+        return true;
       }
     }
   }
