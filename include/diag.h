@@ -1,5 +1,7 @@
 
-
+/** 
+ * Global parameters that can be set and read using diagnostics.
+ */
 struct global_param_type 
 {
   uint32_t mSerial = 0;
@@ -12,15 +14,22 @@ struct global_param_type
   uint8_t mCycleStatus1 = 10;
   uint8_t mCycleStatus2 = 10;
 };
+extern struct global_param_type gParam;
 
+
+
+/** 
+ * Global error counters that can be read and reset using diagnostics 
+ * (DTC)
+ */
 struct error_counters 
 {
   uint16_t mEncoderMisses = 0;
 };
+extern struct error_counters gDTC;
+
 
 extern uint8_t gDiagSession;
-extern struct global_param_type gParam;
-extern struct error_counters gDTC;
 
 
 /**
