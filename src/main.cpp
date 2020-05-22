@@ -41,6 +41,10 @@ void paramCheck()
   if (gParam.mNodeID > 31) gParam.mNodeID = 31;
   if (gParam.mCANid > 0x6F0) gParam.mCANid = 0x100;
   gParam.mCANid &= 0x07F0;
+  if (gParam.mPIDmax < 1 || gParam.mPIDmax > 255) gParam.mPIDmax = 127;
+  if (gParam.mPIDkP < -10000 || gParam.mPIDkP > 10000) gParam.mPIDkP = 1;
+  if (gParam.mPIDkD < -10000 || gParam.mPIDkD > 10000) gParam.mPIDkD = 1;
+  if (gParam.mPIDkI < -10000 || gParam.mPIDkI > 10000) gParam.mPIDkI = 1;
 }
  
 void read_eeprom()
@@ -142,11 +146,7 @@ void setPwm(char mode, byte duty)
   sLast = m;
   gPWM = duty * mode;
   duty = 255 - duty; // PWM zwischen Bremsen und Fahren
-  // Serial.print("SetPwm(");
-  // Serial.print((int)mode);
-  // Serial.print(",");
-  // Serial.print(duty);
-  // Serial.println(")");
+  
   if (mode == 1) // forward
   {
     digitalWrite(MOTOR_PWM1, HIGH); // alternate forward/brake
