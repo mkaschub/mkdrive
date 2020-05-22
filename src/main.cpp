@@ -79,11 +79,11 @@ void rencoder()
   //sLastB = b;
   if (a == b)
   {
-    gEncoderPosition--
+    gEncoderPosition--;
   }
   else
   {
-    gEncoderPosition++
+    gEncoderPosition++;
   }
 }
 
