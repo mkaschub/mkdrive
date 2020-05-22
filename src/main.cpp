@@ -135,7 +135,8 @@ START_INIT:
   attachInterrupt(digitalPinToInterrupt(ENCODER_A), rencoder, CHANGE); // 2 is pin 18
 }
 
-int16_t gPWM = 0;
+uint8_t gPWM = 0;
+int8_t gDirection = 0;
 
 
 void setPwm(char mode, byte duty)
@@ -144,7 +145,8 @@ void setPwm(char mode, byte duty)
   short m = mode * duty;
   if (m == sLast) return;
   sLast = m;
-  gPWM = duty * mode;
+  gPWM = duty;
+  gDirection = mode;
   duty = 255 - duty; // PWM zwischen Bremsen und Fahren
   
   if (mode == 1) // forward
@@ -357,8 +359,8 @@ void loop()
     sLastStatus1 = millis();
 
 
-    gCanRxBuffer[0] = sign(gPWM);
-    gCanRxBuffer[1] = abs(gPWM);
+    gCanRxBuffer[0] = gPWM;
+    gCanRxBuffer[1] = gDirection;
     gCanRxBuffer[2] = gMode;
     gCanRxBuffer[3] = 0;
     memcpy(gCanRxBuffer+4, &gEncoderPosition, 4);
