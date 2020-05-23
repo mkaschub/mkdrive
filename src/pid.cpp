@@ -15,10 +15,10 @@ float pidGetSetpoint()
 
 float pidCompute(float current)
 {
-  static float sIntegral;
-  static float sLastError;
-  static float sResult;
-  static unsigned long sLastTime;
+  static float sIntegral = 0;
+  static float sLastError = 0;
+  static float sResult = 0;
+  static unsigned long sLastTime = 0;
   
   if (sLastTime == millis()) return sResult;
 

@@ -359,8 +359,8 @@ void loop()
     sLastStatus1 = millis();
 
 
-    gCanRxBuffer[0] = gPWM;
-    gCanRxBuffer[1] = gDirection;
+    gCanRxBuffer[0] = gDirection;
+    gCanRxBuffer[1] = gPWM;
     gCanRxBuffer[2] = gMode;
     gCanRxBuffer[3] = 0;
     memcpy(gCanRxBuffer+4, &gEncoderPosition, 4);
