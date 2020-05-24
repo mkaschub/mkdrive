@@ -1,5 +1,7 @@
 # MKDrive Hardware Version 2
 
+**Work in progress**
+
 ## Components
 * ATMEGA 328
 * CAN: MCP2515 + TJA1050
