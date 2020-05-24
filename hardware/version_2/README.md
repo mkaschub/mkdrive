@@ -22,4 +22,4 @@
 * Removed reset button (NRTS is exposed on the AVRISP connector)
 
 ## Resources
-* Board files: https://easyeda.com/mkaschub/can_dc_motor_copy
+* Board files: https://easyeda.com/mkaschub/mkdrive-v2
